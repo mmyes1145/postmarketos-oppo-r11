@@ -49,7 +49,6 @@ build() {
           export KBUILD_BUILD_USER=$(echo ${{ github.actor }})
           export ARCH="arm64"
           export SUBARCH="arm64"
-          export PATH="/home/pmos/clang/bin/:$PATH"
           export CROSS_COMPILE="aarch64-linux-gnu-"
           export OPPO_TARGET_DEVICE="MSM_16051"
           make O=out sdm660-perf_defconfig CC=clang
