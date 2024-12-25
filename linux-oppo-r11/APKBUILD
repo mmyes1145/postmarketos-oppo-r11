@@ -48,7 +48,7 @@ prepare() {
 
 build() {
 	unset LDFLAGS
-	make O="$_outdir" sdm660-perf_defconfig CC="${CC:-gcc}"
+	make O="$_outdir" ARCH="$_carch" sdm660-perf_defconfig CC="${CC:-gcc}" 
 	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
@@ -60,4 +60,4 @@ package() {
 
 sha512sums="
 daa9d892d5b08b507906bec3ff043b82827e3deae2993ac32461458dc26c8e0b75a4c8f3a7b1e666c771d5b3ef2995faf3d8c106af8c1bbaff0699c0d4c0edd3  linux-oppo-r11-b2ff2b34117c2337fef1afebf3b932329b63516c.tar.gz
-"
+,
