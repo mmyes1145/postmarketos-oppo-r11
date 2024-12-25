@@ -23,6 +23,8 @@ makedepends="
 	openssl-dev
 	perl
 "
+export CC="clang"
+export HOSTCC="clang"
 # Source
 _repository="android_kernel_oppo_sdm660_4.4.302_Clang13"
 _commit="b2ff2b34117c2337fef1afebf3b932329b63516c"
