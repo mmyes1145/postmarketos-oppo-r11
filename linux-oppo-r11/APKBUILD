@@ -48,7 +48,7 @@ prepare() {
 }
 
 build() {
-    export PATH="/home/pmos/build/clang/bin:$PATH"
+    export PATH="/home/pmos/clang/bin:$PATH"
 	unset LDFLAGS
 	make O="$_outdir" ARCH="$_carch" sdm660-perf_defconfig CC="${CC:-gcc}" 
 	make -j$(nproc --all) ARCH="$_carch" O=out CC=clang
