@@ -37,7 +37,7 @@ makedepends="
 "
 export CC="clang"
 export HOSTCC="clang"
-export PATH="/home/pmos/clang/bin:$PATH"
+export PATH="/clang/bin:$PATH"
 # Source
 _repository="android_kernel_oppo_sdm660_4.4.153"
 _commit="018f08f73320c15c6fdd47e9b91ebe3b7a44b72b"
@@ -58,7 +58,7 @@ prepare() {
 
 build() {
  clang --version
-    export PATH="/hone/pmos/clang/bin:$PATH"
+    export PATH="/clang/bin:$PATH"
     export KBUILD_BUILD_HOST=Github-Action
           export KBUILD_BUILD_USER=$(echo ${{ github.actor }})
           export ARCH="arm64"
