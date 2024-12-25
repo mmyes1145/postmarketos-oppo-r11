@@ -21,11 +21,13 @@ makedepends="
 	linux-headers
 	flex
 	openssl-dev
-        clang
+    clang
 	perl
 "
 export CC="clang"
 export HOSTCC="clang"
+export OPPO_TARGET_DEVICE="MSM_16051"
+export CROSS_COMPILE="aarch64-linux-gnu-"
 # Source
 _repository="android_kernel_oppo_sdm660_4.4.153"
 _commit="018f08f73320c15c6fdd47e9b91ebe3b7a44b72b"
@@ -37,6 +39,7 @@ source="
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
 
+
 prepare() {
 	default_prepare
 	REPLACE_GCCH=0
@@ -45,6 +48,7 @@ prepare() {
 
 build() {
 	unset LDFLAGS
+	make O="$_outdir" sdm660-perf_defconfig CC="${CC:-gcc}"
 	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
