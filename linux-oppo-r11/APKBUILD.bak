@@ -21,9 +21,18 @@ makedepends="
 	linux-headers
 	flex
 	openssl-dev
-    clang19-dev
-    clang19-headers
+    clang19-analyzer
     clang19-bash-completion
+    clang19-ccache
+    clang19-dev
+    clang19-doc
+    clang19-emacs
+    clang19-extra-tools
+    clang19-headers
+    clang19-libclang
+    clang19-libs
+    clang19-static
+    py3-clang19
 	perl
 "
 export CC="clang"
@@ -51,6 +60,7 @@ build() {
           export KBUILD_BUILD_USER=$(echo ${{ github.actor }})
           export ARCH="arm64"
           export SUBARCH="arm64"
+          
           export CROSS_COMPILE="aarch64-linux-gnu-"
           export OPPO_TARGET_DEVICE="MSM_16051"
           make O=out sdm660-perf_defconfig CC=clang
