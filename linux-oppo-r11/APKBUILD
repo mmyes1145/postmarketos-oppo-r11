@@ -32,6 +32,7 @@ _commit="b2ff2b34117c2337fef1afebf3b932329b63516c"
 _config="config-$_flavor.$arch"
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/mmyes1145/$_repository/archive/$_commit.tar.gz
+        $_config
 "
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
@@ -40,7 +41,6 @@ prepare() {
 	default_prepare
 	REPLACE_GCCH=0
 	. downstreamkernel_prepare
-        cp /home/pmos/build/config-oppo-r11.aarch64 /home/pmos/build/src
 }
 
 build() {
