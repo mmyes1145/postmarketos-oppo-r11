@@ -21,7 +21,8 @@ makedepends="
 	linux-headers
 	flex
 	openssl-dev
-    clang
+    clang19
+    clang19-extra-tools
 	perl
 "
 export CC="clang"
