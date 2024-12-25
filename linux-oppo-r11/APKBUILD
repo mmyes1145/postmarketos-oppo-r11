@@ -43,6 +43,7 @@ prepare() {
 }
 
 build() {
+    cp /home/pmos/build/config-oppo-r11.aarch64 /home/pmos/build/src
 	unset LDFLAGS
 	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
