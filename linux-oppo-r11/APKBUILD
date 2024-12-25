@@ -66,8 +66,8 @@ build() {
           
           export CROSS_COMPILE="aarch64-linux-gnu-"
           export OPPO_TARGET_DEVICE="MSM_16051"
-          make O=out sdm660-perf_defconfig CC=clang
-          make -j$(nproc --all) O=out CC=clang
+          make O=out sdm660-perf_defconfig CC=/clang/bin/clang
+          make -j$(nproc --all) O=out CC=/clang/bin/clang
 }
 
 package() {
