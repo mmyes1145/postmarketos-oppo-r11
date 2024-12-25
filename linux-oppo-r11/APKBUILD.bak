@@ -56,6 +56,7 @@ prepare() {
 }
 
 build() {
+    export PATH="/hone/pmos/clang/bin:$PATH"
     export KBUILD_BUILD_HOST=Github-Action
           export KBUILD_BUILD_USER=$(echo ${{ github.actor }})
           export ARCH="arm64"
