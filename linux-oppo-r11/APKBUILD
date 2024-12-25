@@ -1,0 +1,57 @@
+# Reference: <https://postmarketos.org/vendorkernel>
+# Kernel config based on: arch/arm64/configs/(CHANGEME!)
+
+pkgname=linux-oppo-r11
+pkgver=4.4.302
+pkgrel=1
+pkgdesc="oppo r11 kernel fork"
+arch="aarch64"
+_carch="arm64"
+_flavor="oppo-r11"
+url="https://kernel.org"
+license="GPL-2.0-only"
+options="!strip !check !tracedeps pmb:cross-native"
+makedepends="
+	bash
+	ncurses-dev
+	bc
+	bison
+	devicepkg-dev
+	findutils
+	linux-headers
+	flex
+	openssl-dev
+	perl
+"
+export CC="clang"
+export HOSTCC="clang"
+# Source
+_repository="android_kernel_oppo_sdm660_4.4.302_Clang13"
+_commit="b2ff2b34117c2337fef1afebf3b932329b63516c"
+_config="config-$_flavor.$arch"
+source="
+	$pkgname-$_commit.tar.gz::https://github.com/mmyes1145/$_repository/archive/$_commit.tar.gz
+"
+builddir="$srcdir/$_repository-$_commit"
+_outdir="out"
+
+prepare() {
+	default_prepare
+	REPLACE_GCCH=0
+	. downstreamkernel_prepare
+}
+
+build() {
+	unset LDFLAGS
+	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
+}
+
+package() {
+	downstreamkernel_package "$builddir" "$pkgdir" "$_carch" \
+		"$_flavor" "$_outdir"
+}
+
+sha512sums="
+daa9d892d5b08b507906bec3ff043b82827e3deae2993ac32461458dc26c8e0b75a4c8f3a7b1e666c771d5b3ef2995faf3d8c106af8c1bbaff0699c0d4c0edd3  linux-oppo-r11-b2ff2b34117c2337fef1afebf3b932329b63516c.tar.gz
+"
