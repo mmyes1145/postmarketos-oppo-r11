@@ -36,8 +36,8 @@ makedepends="
     py3-clang19
 	perl
 "
-export CC="clang"
-	export HOSTCC="clang"
+export CC="gcc6-$CC"
+	export HOSTCC="gcc6-$CC"
 	export OPPO_TARGET_DEVICE="MSM_16051"
 	export CROSS_COMPILE="aarch64-linux-gnu-"
 # Source
@@ -59,7 +59,7 @@ prepare() {
 }
 
 build() {
-    make O="$_outdir" ARCH="$_carch" sdm660-perf_defconfig CC=clang
+    make O="$_outdir" ARCH="$_carch" sdm660-perf_defconfig CC="${CC:-gcc}"
     make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
