@@ -58,7 +58,7 @@ prepare() {
 
 build() {
     unset LDFLAGS
-    make O=out ARCH="$_carch" sdm660-perf_defconfig CC="${CC:-gcc}"
+    make ARCH=arm64 CROSS_COMPILE=sdm660-perf_defconfig
     make ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }

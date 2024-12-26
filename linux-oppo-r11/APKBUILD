@@ -40,10 +40,10 @@ CC="gcc6-$CC"
 	HOSTCC="gcc6-gcc"
 # Source
 _repository="android_kernel_oppo_r11"
-_commit="51981b0c72de2870d22e6d2a338669a3185ad626"
+_commit="018f08f73320c15c6fdd47e9b91ebe3b7a44b72b"
 _config="config-$_flavor.$arch"
 source="
-	$pkgname-$_commit.tar.gz::https://github.com/anruichan/$_repository/archive/$_commit.tar.gz
+	$pkgname-$_commit.tar.gz::https://github.com/mmyes1145/$_repository/archive/$_commit.tar.gz
         $_config
 "
 builddir="$srcdir/$_repository-$_commit"
