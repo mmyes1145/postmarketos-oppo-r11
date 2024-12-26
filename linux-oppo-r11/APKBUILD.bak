@@ -2,7 +2,7 @@
 # Kernel config based on: arch/arm64/configs/(CHANGEME!)
 
 pkgname=linux-oppo-r11
-pkgver=4.4.302
+pkgver=4.4.153
 pkgrel=1
 pkgdesc="oppo r11 kernel fork"
 arch="aarch64"
@@ -16,6 +16,7 @@ makedepends="
 	ncurses-dev
 	bc
 	bison
+	gcc6
 	devicepkg-dev
 	findutils
 	linux-headers
@@ -35,9 +36,8 @@ makedepends="
     py3-clang19
 	perl
 "
-export CC="clang"
-export HOSTCC="clang"
-export PATH="/clang/bin:$PATH"
+CC="gcc6-$CC"
+	HOSTCC="gcc6-gcc"
 # Source
 _repository="android_kernel_oppo_sdm660_4.4.153"
 _commit="018f08f73320c15c6fdd47e9b91ebe3b7a44b72b"
@@ -57,17 +57,8 @@ prepare() {
 }
 
 build() {
- clang --version
-    export PATH="/clang/bin:$PATH"
-    export KBUILD_BUILD_HOST=Github-Action
-          export KBUILD_BUILD_USER=$(echo ${{ github.actor }})
-          export ARCH="arm64"
-          export SUBARCH="arm64"
-          
-          export CROSS_COMPILE="aarch64-linux-gnu-"
-          export OPPO_TARGET_DEVICE="MSM_16051"
-          make O=out sdm660-perf_defconfig CC=/clang/bin/clang
-          make -j$(nproc --all) O=out CC=/clang/bin/clang
+    make ARCH="$_carch" CC="${CC:-gcc}" \
+		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
 
 package() {
