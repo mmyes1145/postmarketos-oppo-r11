@@ -30,13 +30,11 @@ makedepends="
     musl-dev
     libtirpc-dev
     gcc-aarch64-none-elf
-    clang19-headers
-    clang19-libclang
-    clang19-libs
-    clang19-static
-    py3-clang19
+    clang
 	perl
 "
+    export CC="clang"
+export HOSTCC="clang"
 	export OPPO_TARGET_DEVICE="MSM_16051"
 # Source
 _repository="android_kernel_oppo_r11"
@@ -45,7 +43,6 @@ _config="config-$_flavor.$arch"
 source="
 	$pkgname-$_commit.tar.gz::https://github.com/anruichan/$_repository/archive/$_commit.tar.gz
         $_config
-        gcc10-extern_YYLOC_global_declaration.patch
 "
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
