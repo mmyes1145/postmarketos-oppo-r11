@@ -29,7 +29,7 @@ makedepends="
     build-base
     musl-dev
     libtirpc-dev
-    clang19-extra-tools
+    gcc-aarch64-none-elf
     clang19-headers
     clang19-libclang
     clang19-libs
