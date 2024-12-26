@@ -33,8 +33,6 @@ makedepends="
     clang
 	perl
 "
-    export CC="clang"
-export HOSTCC="clang"
 	export OPPO_TARGET_DEVICE="MSM_16051"
 # Source
 _repository="android_kernel_oppo_r11"

@@ -30,13 +30,11 @@ makedepends="
     musl-dev
     libtirpc-dev
     gcc-aarch64-none-elf
-    clang19-headers
-    clang19-libclang
-    clang19-libs
-    clang19-static
-    py3-clang19
+    clang
 	perl
 "
+    export CC="clang"
+export HOSTCC="clang"
 	export OPPO_TARGET_DEVICE="MSM_16051"
 # Source
 _repository="android_kernel_oppo_r11"
