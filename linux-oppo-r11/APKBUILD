@@ -17,6 +17,7 @@ makedepends="
 	bc
 	bison
 	gcc6
+	gcc
 	devicepkg-dev
 	findutils
 	linux-headers
@@ -26,8 +27,8 @@ makedepends="
     gmp-dev
     elfutils-dev 
     build-base
-    clang19-doc
-    clang19-emacs
+    musl-dev
+    libtirpc-dev
     clang19-extra-tools
     clang19-headers
     clang19-libclang
