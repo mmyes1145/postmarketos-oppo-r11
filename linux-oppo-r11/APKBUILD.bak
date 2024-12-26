@@ -36,8 +36,7 @@ makedepends="
     py3-clang19
 	perl
 "
-export CC="gcc6-$CC"
-	export HOSTCC="gcc6-$CC"
+
 	export OPPO_TARGET_DEVICE="MSM_16051"
 # Source
 _repository="android_kernel_oppo_sdm660_4.4.153"
