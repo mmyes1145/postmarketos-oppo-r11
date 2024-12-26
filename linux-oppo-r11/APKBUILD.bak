@@ -22,9 +22,9 @@ makedepends="
 	linux-headers
 	flex
 	openssl-dev
-    clang19-analyzer
-    clang19-bash-completion
-    clang19-ccache
+    installkernel
+    gmp-dev
+    elfutils-dev 
     clang19-dev
     clang19-doc
     clang19-emacs
@@ -36,8 +36,8 @@ makedepends="
     py3-clang19
 	perl
 "
-export CC=gcc
-	export HOSTCC=gcc
+export CC="gcc6-$CC"
+	export HOSTCC="gcc6-$CC"
 	export OPPO_TARGET_DEVICE="MSM_16051"
 	export CROSS_COMPILE="aarch64-linux-gnu-"
 # Source
