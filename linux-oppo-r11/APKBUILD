@@ -38,7 +38,6 @@ makedepends="
 "
 CC="gcc6-$CC"
 	HOSTCC="gcc6-gcc"
-	ARCH="arm64"
 	OPPO_TARGET_DEVICE="MSM_16051"
 	CROSS_COMPILE="aarch64-linux-gnu-"
 # Source
@@ -61,7 +60,7 @@ prepare() {
 
 build() {
     unset LDFLAGS
-    make O=out sdm660-perf_defconfig CC=clang
+    make O=out ARCH="$_carch" sdm660-perf_defconfig CC=clang
     make ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
