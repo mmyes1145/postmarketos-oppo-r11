@@ -45,7 +45,6 @@ source="
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
 
-
 prepare() {
 	default_prepare
 	REPLACE_GCCH=0
@@ -53,13 +52,14 @@ prepare() {
 }
 
 build() {
-    make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
+	unset LDFLAGS
+	make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
 
 package() {
-	downstreamkernel_package "$builddir" "$pkgdir" "$_carch" \
-		"$_flavor" "$_outdir"
+        downstreamkernel_package \
+		"$builddir" "$pkgdir" "$_carch" "$_flavor" "$_outdir"
 }
 
 sha512sums="

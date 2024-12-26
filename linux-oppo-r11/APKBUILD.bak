@@ -33,8 +33,6 @@ makedepends="
     clang
 	perl
 "
-    export CC="clang"
-export HOSTCC="clang"
 	export OPPO_TARGET_DEVICE="MSM_16051"
 # Source
 _repository="android_kernel_oppo_r11"
@@ -46,7 +44,7 @@ source="
 "
 builddir="$srcdir/$_repository-$_commit"
 _outdir="out"
-
+homedir="/home/pmos"
 
 prepare() {
 	default_prepare
@@ -60,8 +58,8 @@ build() {
 }
 
 package() {
-	downstreamkernel_package "$builddir" "$pkgdir" "$_carch" \
-		"$_flavor" "$_outdir"
+	KERNEL_IMAGE_NAME="Image.gz" downstreamkernel_package \
+		"$builddir" "$pkgdir" "$_carch" "$_flavor" "$_outdir"
 }
 
 sha512sums="
