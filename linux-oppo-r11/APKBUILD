@@ -61,8 +61,8 @@ prepare() {
 
 build() {
     export ARCH= "aarch64"
-    make O=out  sdm660-perf_defconfig CC=clang
-    make ARCH="$_carch" CC="${CC:-gcc}" \
+    make O="$_outdir" sdm660-perf_defconfig CC=clang
+    make O="$_outdir" ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
 

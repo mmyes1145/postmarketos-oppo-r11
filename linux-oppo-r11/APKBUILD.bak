@@ -37,6 +37,7 @@ makedepends="
 	perl
 "
 export CC="clang"
+export ARCH= "aarch64"
 	export HOSTCC="clang"
 	export OPPO_TARGET_DEVICE="MSM_16051"
 	export CROSS_COMPILE="aarch64-linux-gnu-"
@@ -59,8 +60,8 @@ prepare() {
 }
 
 build() {
-    unset LDFLAGS
-    make O=out ARCH="$_carch" sdm660-perf_defconfig CC=clang
+    export ARCH= "aarch64"
+    make O=out  sdm660-perf_defconfig CC=clang
     make ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
