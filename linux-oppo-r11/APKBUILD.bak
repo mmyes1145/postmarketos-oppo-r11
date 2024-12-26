@@ -38,7 +38,6 @@ makedepends="
 "
 CC="gcc6-$CC"
 	HOSTCC="gcc6-gcc"
-	ARCH="arm64"
 	OPPO_TARGET_DEVICE="MSM_16051"
 	CROSS_COMPILE="aarch64-linux-gnu-"
 # Source
