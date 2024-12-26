@@ -38,6 +38,9 @@ makedepends="
 "
 CC="gcc6-$CC"
 	HOSTCC="gcc6-gcc"
+	ARCH="arm64"
+	OPPO_TARGET_DEVICE="MSM_16051"
+	CROSS_COMPILE="aarch64-linux-gnu-"
 # Source
 _repository="android_kernel_oppo_sdm660_4.4.153"
 _commit="018f08f73320c15c6fdd47e9b91ebe3b7a44b72b"
@@ -58,7 +61,7 @@ prepare() {
 
 build() {
     unset LDFLAGS
-    make ARCH=arm64 CROSS_COMPILE=sdm660-perf_defconfig
+    make O=out sdm660-perf_defconfig CC=clang
     make ARCH="$_carch" CC="${CC:-gcc}" \
 		KBUILD_BUILD_VERSION="$((pkgrel + 1 ))-postmarketOS"
 }
