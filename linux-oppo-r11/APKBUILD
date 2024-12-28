@@ -13,24 +13,11 @@ license="GPL-2.0-only"
 options="!strip !check !tracedeps pmb:cross-native"
 makedepends="
 	bash
-	ncurses-dev
 	bc
 	bison
-	gcc6
-	gcc
 	devicepkg-dev
-	findutils
-	linux-headers
 	flex
 	openssl-dev
-    installkernel
-    gmp-dev
-    elfutils-dev 
-    build-base
-    musl-dev
-    libtirpc-dev
-    gcc-aarch64-none-elf
-    clang
 	perl
 "
 	export OPPO_TARGET_DEVICE="MSM_16051"
